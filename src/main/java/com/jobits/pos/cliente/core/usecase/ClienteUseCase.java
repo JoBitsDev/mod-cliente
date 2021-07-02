@@ -15,4 +15,6 @@ import com.root101.clean.core.app.usecase.CRUDUseCase;
  */
 public interface ClienteUseCase extends CRUDUseCase<ClienteDomain> {
 
+    public ClienteDomain findClientByPhone(String phone);
+    
 }
