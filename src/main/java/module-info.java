@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-module com.jobits.pos.cliente {
+module org.jobits.pos.cliente {
     requires com.google.guice;
     requires com.fasterxml.jackson.databind;
     requires java.logging;
