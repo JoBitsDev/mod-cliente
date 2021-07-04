@@ -17,4 +17,9 @@ public class ClienteUseCaseImpl extends DefaultCRUDUseCase<ClienteDomain> implem
         setRepo(ClienteCoreModule.getInstance().getImplementation(ClienteRepo.class));
     }
 
+    @Override
+    public ClienteDomain findClientByPhone(String phone) {
+        throw new UnsupportedOperationException();
+    }
+
 }
