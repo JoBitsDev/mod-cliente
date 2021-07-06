@@ -5,6 +5,7 @@
  */
 package com.jobits.pos.cliente.core.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.root101.clean.core.domain.DomainObjectValitaded;
 import java.util.ArrayList;
 import java.util.List;
@@ -18,6 +19,7 @@ import javax.validation.constraints.Size;
  * @author Jorge
  *
  */
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class ClienteDomain extends DomainObjectValitaded {
 
     private int id;

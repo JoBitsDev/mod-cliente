@@ -5,6 +5,7 @@
  */
 package com.jobits.pos.cliente.core.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.root101.clean.core.domain.DomainObjectValitaded;
 import java.io.Serializable;
 import javax.persistence.Basic;
@@ -28,6 +29,7 @@ import javax.validation.constraints.Size;
  * @author Jorge
  *
  */
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class DireccionEnvioDomain extends DomainObjectValitaded {
 
     private Integer id;
