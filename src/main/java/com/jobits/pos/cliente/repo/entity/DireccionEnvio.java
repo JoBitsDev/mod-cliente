@@ -28,7 +28,7 @@ import javax.validation.constraints.Size;
  *
  */
 @Entity
-@Table(name = "direccion_envio")
+@Table(name = "direccion_envio",schema = "cliente")
 @NamedQueries({
     @NamedQuery(name = "DireccionEnvio.findAll", query = "SELECT d FROM DireccionEnvio d"),
     @NamedQuery(name = "DireccionEnvio.findById", query = "SELECT d FROM DireccionEnvio d WHERE d.id = :id"),
