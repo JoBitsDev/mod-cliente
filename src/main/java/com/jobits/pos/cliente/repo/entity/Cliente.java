@@ -31,7 +31,7 @@ import javax.validation.constraints.Size;
  * 
  */
 @Entity
-@Table(name = "cliente")
+@Table(name = "cliente",schema = "cliente")
 @NamedQueries({
     @NamedQuery(name = "Cliente.findAll", query = "SELECT c FROM Cliente c"),
     @NamedQuery(name = "Cliente.findById", query = "SELECT c FROM Cliente c WHERE c.id = :id"),
@@ -70,7 +70,7 @@ public class Cliente implements Serializable {
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(name = "direccion_envio", referencedColumnName = "clienteid")
     private List<DireccionEnvio> direccionEnvioList;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "clienteid")
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(name = "cliente_meta", referencedColumnName = "clienteid")
     private List<ClienteMeta> clienteMetaList;
 
