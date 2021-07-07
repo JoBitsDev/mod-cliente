@@ -70,10 +70,10 @@ public class Cliente implements Serializable {
     @Column(name = "telefono")
     private String telefono;
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
-    @JoinColumn(name = "direccion_envio", referencedColumnName = "clienteid")
+    @JoinColumn(table = "direccion_envio", referencedColumnName = "clienteid")
     private List<DireccionEnvio> direccionEnvioList;
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
-    @JoinColumn(name = "cliente_meta", referencedColumnName = "clienteid")
+    @JoinColumn(table = "cliente_meta", referencedColumnName = "clienteid")
     private List<ClienteMeta> clienteMetaList;
 
     public Cliente() {
