@@ -3,8 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.jobits.pos.cliente.repo.entity;
 
+package org.jobits.pos.cliente.repo.entity;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.io.Serializable;
 import javax.persistence.Basic;
 import javax.persistence.Column;
@@ -21,14 +23,13 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 /**
- *
+ * 
  * JoBits
- *
  * @author Jorge
- *
+ * 
  */
 @Entity
-@Table(name = "direccion_envio",schema = "cliente")
+@Table(name = "direccion_envio", schema = "cliente")
 @NamedQueries({
     @NamedQuery(name = "DireccionEnvio.findAll", query = "SELECT d FROM DireccionEnvio d"),
     @NamedQuery(name = "DireccionEnvio.findById", query = "SELECT d FROM DireccionEnvio d WHERE d.id = :id"),
@@ -51,6 +52,7 @@ public class DireccionEnvio implements Serializable {
     private Integer id;
     @Basic(optional = false)
     @NotNull
+    @Size(min = 1, max = 50)
     @Column(name = "alias")
     private String alias;
     @Basic(optional = false)
@@ -87,6 +89,10 @@ public class DireccionEnvio implements Serializable {
     @Size(min = 1, max = 255)
     @Column(name = "provincia")
     private String provincia;
+    @JoinColumn(name = "clienteid", referencedColumnName = "id")
+    @ManyToOne(optional = false)
+    @JsonIgnore
+    private Cliente clienteid;
 
     public DireccionEnvio() {
     }
@@ -185,6 +191,14 @@ public class DireccionEnvio implements Serializable {
         this.provincia = provincia;
     }
 
+    public Cliente getClienteid() {
+        return clienteid;
+    }
+
+    public void setClienteid(Cliente clienteid) {
+        this.clienteid = clienteid;
+    }
+
     @Override
     public int hashCode() {
         int hash = 0;
@@ -207,7 +221,7 @@ public class DireccionEnvio implements Serializable {
 
     @Override
     public String toString() {
-        return "com.jobits.pos.reserva.repo.entity.DireccionEnvio[ id=" + id + " ]";
+        return "org.jobits.pos.cliente.repo.entity.DireccionEnvio[ id=" + id + " ]";
     }
 
 }
