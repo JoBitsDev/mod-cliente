@@ -25,7 +25,7 @@ import org.jobits.db.versioncontrol.DataVersionControlService;
  */
 public class ClienteRepoModule extends DefaultAbstractModule {
 
-    public static final String MODULE_NAME = "Reserva Repo Module";
+    public static final String MODULE_NAME = "Cliente Repo Module";
 
     private final Injector inj = Guice.createInjector(new ClienteRepoInjectionConfig());
 
