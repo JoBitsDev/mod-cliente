@@ -67,7 +67,7 @@ public class ClienteRepoModule extends DefaultAbstractModule {
     }
 
     private void registerConnectionPool() {
-        ConnectionPoolHandler.registerConnectionPoolService(getModuleName(),"JoBits POS Cliente Repo PU");//TODO: resourcehandler
+        ConnectionPoolHandler.registerConnectionPoolService(getModuleName(),ResourceHandler.getString("com.jobits.pos.cliente.repo.util.persistence_unit_name"));//TODO: resourcehandler
         String schema = ResourceHandler.getString("com.jobits.pos.cliente.repo.db.shema");
         String dir = "org/jobits/pos/cliente/db/migration";
         DataVersionControlHandler.registerDataVersionControlService(DataVersionControlService.from(MODULE_NAME, dir, schema));

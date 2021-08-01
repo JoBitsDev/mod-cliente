@@ -9,8 +9,8 @@ import com.google.inject.AbstractModule;
 import com.google.inject.Scopes;
 import com.jobits.pos.cliente.core.repo.ClienteRepo;
 import com.jobits.pos.cliente.core.usecase.ClienteUseCase;
-import com.jobits.pos.cliente.core.usecase.impl.ClienteUseCaseImpl;
-import com.jobits.pos.reserva.repo.impl.ClienteRepoImpl;
+import org.jobits.pos.cliente.core.usecase.impl.ClienteUseCaseImpl;
+import org.jobits.pos.reserva.repo.impl.ClienteRepoImpl;
 
 /**
  *

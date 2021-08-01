@@ -7,7 +7,7 @@ package com.jobits.pos.cliente.repo.module;
 
 import com.google.inject.AbstractModule;
 import com.google.inject.Singleton;
-import com.jobits.pos.reserva.repo.impl.ClienteRepoImpl;
+import org.jobits.pos.reserva.repo.impl.ClienteRepoImpl;
 import com.jobits.pos.cliente.core.repo.ClienteRepo;
 
 /**
