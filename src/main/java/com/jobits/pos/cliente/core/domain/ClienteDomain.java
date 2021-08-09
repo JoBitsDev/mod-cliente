@@ -170,7 +170,7 @@ public class ClienteDomain extends DomainObjectValitaded {
 
     @Override
     public String toString() {
-        return "com.jobits.pos.cliente.core.domain.Cliente[ id=" + id + " ]";
+        return nombre + (apellidos == null ? "" : " " + apellidos);
     }
 
 }
