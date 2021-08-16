@@ -25,7 +25,7 @@ import org.jobits.db.versioncontrol.DataVersionControlService;
  */
 public class ClienteRepoModule extends DefaultAbstractModule {
 
-    public static final String MODULE_NAME = "Reserva Repo Module";
+    public static final String MODULE_NAME = "Cliente Repo Module";
 
     private final Injector inj = Guice.createInjector(new ClienteRepoInjectionConfig());
 
@@ -67,8 +67,7 @@ public class ClienteRepoModule extends DefaultAbstractModule {
     }
 
     private void registerConnectionPool() {
-        ConnectionPoolHandler.registerConnectionPoolService(getModuleName(),
-                ResourceHandler.getString("com.jobits.pos.cliente.repol.util.persistence_unit_name"));
+        ConnectionPoolHandler.registerConnectionPoolService(getModuleName(),ResourceHandler.getString("com.jobits.pos.cliente.repo.util.persistence_unit_name"));//TODO: resourcehandler
         String schema = ResourceHandler.getString("com.jobits.pos.cliente.repo.db.shema");
         String dir = "org/jobits/pos/cliente/db/migration";
         DataVersionControlHandler.registerDataVersionControlService(DataVersionControlService.from(MODULE_NAME, dir, schema));

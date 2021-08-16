@@ -4,8 +4,9 @@
  * and open the template in the editor.
  */
 
-package com.jobits.pos.cliente.repo.entity;
+package org.jobits.pos.cliente.repo.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.io.Serializable;
 import javax.persistence.Basic;
 import javax.persistence.Column;
@@ -28,7 +29,7 @@ import javax.validation.constraints.Size;
  * 
  */
 @Entity
-@Table(name = "cliente_meta")
+@Table(name = "cliente_meta", schema = "cliente")
 @NamedQueries({
     @NamedQuery(name = "ClienteMeta.findAll", query = "SELECT c FROM ClienteMeta c"),
     @NamedQuery(name = "ClienteMeta.findById", query = "SELECT c FROM ClienteMeta c WHERE c.id = :id"),
@@ -52,7 +53,10 @@ public class ClienteMeta implements Serializable {
     @Size(min = 1, max = 2147483647)
     @Column(name = "value")
     private String value;
-
+    @JoinColumn(name = "clienteid", referencedColumnName = "id")
+    @ManyToOne(optional = false)
+    @JsonIgnore
+    private Cliente clienteid;
 
     public ClienteMeta() {
     }
@@ -90,7 +94,15 @@ public class ClienteMeta implements Serializable {
     public void setValue(String value) {
         this.value = value;
     }
-    
+
+    public Cliente getClienteid() {
+        return clienteid;
+    }
+
+    public void setClienteid(Cliente clienteid) {
+        this.clienteid = clienteid;
+    }
+
     @Override
     public int hashCode() {
         int hash = 0;
@@ -113,7 +125,7 @@ public class ClienteMeta implements Serializable {
 
     @Override
     public String toString() {
-        return "com.jobits.pos.reserva.repo.entity.ClienteMeta[ id=" + id + " ]";
+        return "org.jobits.pos.cliente.repo.entity.ClienteMeta[ id=" + id + " ]";
     }
 
 }

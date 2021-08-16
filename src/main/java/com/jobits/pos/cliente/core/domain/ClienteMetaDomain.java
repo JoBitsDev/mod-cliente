@@ -5,6 +5,7 @@
  */
 package com.jobits.pos.cliente.core.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.root101.clean.core.domain.DomainObjectValitaded;
 import javax.validation.constraints.NotNull;
 
@@ -15,6 +16,7 @@ import javax.validation.constraints.NotNull;
  * @author Jorge
  *
  */
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class ClienteMetaDomain extends DomainObjectValitaded {
 
     private int id;

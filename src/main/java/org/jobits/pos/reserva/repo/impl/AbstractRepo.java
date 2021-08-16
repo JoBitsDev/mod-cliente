@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.jobits.pos.reserva.repo.impl;
+package org.jobits.pos.reserva.repo.impl;
 
 import com.jobits.pos.cliente.repo.module.ClienteRepoModule;
 import org.jobits.db.pool.ConnectionPoolHandler;

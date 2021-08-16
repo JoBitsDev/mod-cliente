@@ -7,8 +7,10 @@ package com.jobits.pos.cliente.core.module;
 
 import com.google.inject.AbstractModule;
 import com.google.inject.Scopes;
+import com.jobits.pos.cliente.core.repo.ClienteRepo;
 import com.jobits.pos.cliente.core.usecase.ClienteUseCase;
-import com.jobits.pos.cliente.core.usecase.impl.ClienteUseCaseImpl;
+import org.jobits.pos.cliente.core.usecase.impl.ClienteUseCaseImpl;
+import org.jobits.pos.reserva.repo.impl.ClienteRepoImpl;
 
 /**
  *
@@ -21,7 +23,10 @@ class ClienteInjectionConfig extends AbstractModule {
 
     @Override
     protected void configure() {
+
         bind(ClienteUseCase.class).to(ClienteUseCaseImpl.class).in(Scopes.SINGLETON);
+        
+        bind(ClienteRepo.class).to(ClienteRepoImpl.class).in(Scopes.SINGLETON);
 
     }
 

@@ -4,11 +4,10 @@
  * and open the template in the editor.
  */
 
-package com.jobits.pos.cliente.repo.entity;
+package org.jobits.pos.cliente.repo.entity;
 
 import java.io.Serializable;
 import java.util.List;
-import java.util.Set;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -16,10 +15,10 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -31,7 +30,7 @@ import javax.validation.constraints.Size;
  * 
  */
 @Entity
-@Table(name = "cliente")
+@Table(name = "cliente", schema = "cliente")
 @NamedQueries({
     @NamedQuery(name = "Cliente.findAll", query = "SELECT c FROM Cliente c"),
     @NamedQuery(name = "Cliente.findById", query = "SELECT c FROM Cliente c WHERE c.id = :id"),
@@ -44,7 +43,8 @@ public class Cliente implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq")
+    @SequenceGenerator(name = "seq",schema = "cliente",sequenceName = "cliente_id_seq", allocationSize = 1)
     @Basic(optional = false)
     @Column(name = "id")
     private Integer id;
@@ -67,11 +67,9 @@ public class Cliente implements Serializable {
     @Size(min = 1, max = 20)
     @Column(name = "telefono")
     private String telefono;
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
-    @JoinColumn(name = "direccion_envio", referencedColumnName = "clienteid")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "clienteid")
     private List<DireccionEnvio> direccionEnvioList;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "clienteid")
-    @JoinColumn(name = "cliente_meta", referencedColumnName = "clienteid")
     private List<ClienteMeta> clienteMetaList;
 
     public Cliente() {
@@ -173,7 +171,7 @@ public class Cliente implements Serializable {
 
     @Override
     public String toString() {
-        return "com.jobits.pos.reserva.repo.entity.Cliente[ id=" + id + " ]";
+        return "org.jobits.pos.cliente.repo.entity.Cliente[ id=" + id + " ]";
     }
 
 }
